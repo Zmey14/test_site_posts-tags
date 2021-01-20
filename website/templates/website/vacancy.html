@@ -1,0 +1,13 @@
+{% extends 'website/base_website.html' %}
+
+
+{% block title %}
+    Post list
+{% endblock %}
+
+{% block content %}
+    <h1 class="mb-5">Вакансии:</h1>
+    {% for post in page_object.object_list %}
+        {% include 'website/includes/post_card_template.html' %}
+    {% endfor %}
+{% endblock %}

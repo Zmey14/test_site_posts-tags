@@ -1,0 +1,12 @@
+{% extends 'website/base_website.html' %}
+
+{% block title %}
+    Tags list - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+    <h2 class="mb-5">Тэги:</h2>
+    {% for tag in tags %}
+        <h3><a href="{{ tag.get_absolute_url }}">{{ tag.title }}</a></h3>
+    {% endfor %}
+{% endblock %}

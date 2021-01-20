@@ -1,0 +1,30 @@
+{% extends 'website/base_website.html' %}
+
+{% block title %}
+    Редактировать тэг "{{ tag.title|title }}" - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+    <!--после нажатия кнопки, данные улетят на сервер, по этому используем - post-->
+    <form action="{{ tag.get_update_url }}" method="post">
+        {% csrf_token %}
+
+        {% for field in form %}
+            <div class="form-group">
+                <!--обработка ошибок-->
+                {% if field.errors %}
+                    <div class="alert alert-danger">
+                        {{ field.errors }}
+                    </div>
+                {% endif %}
+
+                {{ field.label}}
+                {{ field }}
+            </div>
+        {% endfor %}
+
+        <button type="submit" class="btn btn-info">Редактировать Тэг</button>
+
+    </form>
+
+{% endblock %}
